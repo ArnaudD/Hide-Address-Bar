@@ -25,6 +25,11 @@
 			setTimeout(function(){
 				//at load, if user hasn't scrolled more than 20 or so...
 				if( getScrollTop() < 20 ){
+					// min-height trick for short pages
+					var innerHeight = navigator.userAgent.match(/android 4\.0/i) === null ? window.innerHeight : window.innerHeight + 50;
+					if( document.height <= window.innerHeight + 50 ){
+						document.body.style.minHeight = (window.innerHeight + 50) +'px';
+					}
 					//reset to hide addr bar at onload
 					win.scrollTo( 0, scrollTop === 1 ? 0 : 1 );
 				}
